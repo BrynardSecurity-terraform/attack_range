@@ -1,0 +1,12 @@
+---
+
+- name: Download Sophos
+  win_shell: |
+    [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
+    (New-Object System.Net.WebClient).DownloadFile("https://api-cloudstation-us-east-2.prod.hydra.sophos.com/api/download/9287a9b85973f795f5c7e6b7fd0f4e32/SophosSetup.exe", "C:\SophosSetup.exe")
+  
+- name: Install Sophos
+  win_package:
+    path: C:\SophosSetup.exe
+    product_id: Sophos
+    arguments: '--products=all --devicegroup=attack_range_hosts --quiet'

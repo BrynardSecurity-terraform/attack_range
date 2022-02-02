@@ -13,6 +13,14 @@ module "vpc" {
   azs                  = data.aws_availability_zones.available.names
   public_subnets       = ["10.0.1.0/24"]
   enable_dns_hostnames = true
+  enable_flow_log = true
+  flow_log_destination_type = "s3"
+  flow_log_destination_arn = "arn:aws:s3:::sophos-optix-flowlogs-693051501776-us-west-2/sophos-optix-flowlogs/"
+  flow_log_cloudwatch_iam_role_arn = "arn:aws:iam::693051501776:role/Sophos-Optix-labda-to-cloudWatch"
+  flow_log_file_format = "plain-text"
+  flow_log_max_aggregation_interval = 600
+  flow_log_log_format = "$${version} $${account-id} $${interface-id} $${srcaddr} $${dstaddr} $${srcport} $${dstport} $${protocol} $${packets} $${bytes} $${start} $${end} $${action} $${log-status} $${vpc-id} $${subnet-id} $${instance-id} $${type} $${pkt-srcaddr} $${pkt-dstaddr} $${region} $${az-id} $${pkt-src-aws-service} $${pkt-dst-aws-service} $${flow-direction} $${traffic-path}"
+  flow_log_traffic_type = "ACCEPT"
 
 }
 
