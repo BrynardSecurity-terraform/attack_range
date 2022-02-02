@@ -5,7 +5,7 @@ sudo pip3 install virtualenv
 curl -s https://releases.hashicorp.com/terraform/0.14.4/terraform_0.14.4_linux_amd64.zip -o terraform.zip
 unzip terraform.zip
 sudo mv terraform /usr/local/bin/
-git clone https://github.com/splunk/attack_range && cd attack_range
+git clone https://github.com/BrynardSecurity-terraform/attack_range && cd attack_range
 cd terraform/aws/local
 terraform init
 cd ../../..
